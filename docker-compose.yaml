@@ -1,0 +1,21 @@
+version: '2'
+services:
+  ui:
+    build: ./ui
+    image: ihordoros/docker-ui:v2
+    ports:
+      - '80:80'
+    depends_on:
+      - api
+  api:
+    build: ./api
+    image: ihordoros/docker-api:v2
+    ports:
+      - '8080:8080'
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - '27017:27017'
+
